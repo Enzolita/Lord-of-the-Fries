@@ -1,0 +1,1 @@
+web: gunicorn lord_of_the_fries.wsgi --log-file -
