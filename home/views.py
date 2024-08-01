@@ -7,3 +7,4 @@ def home_page(request):
     return HttpResponse("Hello, Home!")
     template_name = "home/index.html"
     paginate_by = 6
+
