@@ -1,0 +1,11 @@
+<!-- prettier-ignore -->
+{% extends 'base.html' %}
+{% load i18n %}
+{% block page-content %}
+<section class="row justify-content-center m-0 mb-4">
+  <div class="account-management text-center">
+    {% block content %} {% endblock content %}
+  </div>
+</section>
+
+{% endblock page-content %}
