@@ -6,8 +6,12 @@ from cloudinary.models import CloudinaryField
 
 class Recipe(models.Model):
     TAGS = [
-        ("recipe", "Recipe"),
-    ]
+        ('LACTOSEFREE', 'Lactose-free'),
+        ('VEGAN', 'Vegan'),
+        ('GLUTEN_FREE', 'Gluten-Free'),
+        ('KETO', 'Keto'),
+        ]
+
     STATUS = [
         ("unpublished", "Unpublished"),
     ]
