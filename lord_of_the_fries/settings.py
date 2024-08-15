@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 import dj_database_url
 from pathlib import Path
+from django.contrib.sites.models import Site
 if os.path.isfile('env.py'):
     import env
 
@@ -31,6 +32,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', '8000-enzolita-lordofthefries-m97etwxax3l.ws.codeinstitute-ide.net']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.herokuapp.com',
+]
 
 
 AUTHENTICATION_BACKENDS = [
@@ -52,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'lord_of_the_fries.apps.LordOfTheFriesConfig',
     "django.contrib.sites",
     "allauth",
     "allauth.account",
@@ -64,8 +70,10 @@ INSTALLED_APPS = [
     'home',
 ]
 
+
 CLOUDINARY_URL = os.environ.get("CLOUDINARY_URL")
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,6 +85,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
 ]
+
 
 ROOT_URLCONF = 'lord_of_the_fries.urls'
 
