@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from cloudinary.models import CloudinaryField
 
-
+STATUS = ((0, "Draft"), (1, "Published"))
 class Recipe(models.Model):
     TAGS = [
         ('LACTOSEFREE', 'Lactose-free'),
@@ -12,9 +12,6 @@ class Recipe(models.Model):
         ('KETO', 'Keto'),
         ]
 
-    STATUS = [
-        ("unpublished", "Unpublished"),
-    ]
     """
     Represents a recipe with ingredients, an image, and related comments.
     """
@@ -98,7 +95,6 @@ class Comment(models.Model):
     STATUS_CHOICES = (
         (0, "Pending"),
         (1, "Approved"),
-        (2, "Rejected"),
     )
 
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comments")
@@ -109,7 +105,7 @@ class Comment(models.Model):
         blank=True,
         null=True,
     )
-    content = models.TextField()  # The content of the comment
+    content = models.TextField() 
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
 
@@ -118,3 +114,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.author.username} on {self.created_on.strftime('%Y-%m-%d %H:%M')}"
+
+# {local_time.strftime('%Y-%m-%d %H:%M')}"
