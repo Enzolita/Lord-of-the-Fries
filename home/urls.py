@@ -7,5 +7,6 @@ admin.autodiscover()
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_page),
-    path('', Index.as_view(), name='home')
+    path('', Index.as_view(), name='home'),
+    path('recipe/', views.recipe_view, name='recipe'),
 ]   
